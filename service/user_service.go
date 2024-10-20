@@ -2,16 +2,12 @@ package service
 
 import (
 	"context"
-	"fmt"
 	"sync"
 
 	"github.com/adieos/ets-pweb-be/constants"
 	"github.com/adieos/ets-pweb-be/dto"
 	"github.com/adieos/ets-pweb-be/entity"
-	"github.com/adieos/ets-pweb-be/helpers"
 	"github.com/adieos/ets-pweb-be/repository"
-	"github.com/adieos/ets-pweb-be/utils"
-	"github.com/google/uuid"
 )
 
 type (
@@ -47,23 +43,12 @@ func (s *userService) RegisterUser(ctx context.Context, req dto.UserCreateReques
 	mu.Lock()
 	defer mu.Unlock()
 
-	var filename string
-
 	_, flag, _ := s.userRepo.CheckEmail(ctx, nil, req.Email)
 	if flag {
 		return dto.UserResponse{}, dto.ErrEmailAlreadyExists
 	}
 
-	if req.Image != nil {
-		imageId := uuid.New()
-		ext := utils.GetExtensions(req.Image.Filename)
-
-		filename = fmt.Sprintf("profile/%s.%s", imageId, ext)
-		if err := utils.UploadFile(req.Image, filename); err != nil {
-			return dto.UserResponse{}, err
-		}
-	}
-
+	// password is not hashed DO NOT DO THIS IN REAL LIFE !!!
 	user := entity.User{
 		Name:       req.Name,
 		TelpNumber: req.TelpNumber,
@@ -107,8 +92,8 @@ func (s *userService) Verify(ctx context.Context, req dto.UserLoginRequest) (dto
 		return dto.UserLoginResponse{}, dto.ErrEmailNotFound
 	}
 
-	checkPassword, err := helpers.CheckPassword(check.Password, []byte(req.Password))
-	if err != nil || !checkPassword {
+	// password is not hashed DO NOT DO THIS IN REAL LIFE !!!
+	if check.Password != req.Password {
 		return dto.UserLoginResponse{}, dto.ErrPasswordNotMatch
 	}
 
