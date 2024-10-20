@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"github.com/Caknoooo/go-gin-clean-starter/controller"
-	"github.com/Caknoooo/go-gin-clean-starter/middleware"
-	"github.com/Caknoooo/go-gin-clean-starter/service"
+	"github.com/adieos/ets-pweb-be/controller"
+	"github.com/adieos/ets-pweb-be/middleware"
+	"github.com/adieos/ets-pweb-be/service"
 	"github.com/gin-gonic/gin"
 )
 

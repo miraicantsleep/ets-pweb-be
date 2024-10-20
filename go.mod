@@ -1,4 +1,4 @@
-module github.com/Caknoooo/go-gin-clean-starter
+module github.com/adieos/ets-pweb-be
 
 go 1.21
 

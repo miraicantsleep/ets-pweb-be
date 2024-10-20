@@ -4,13 +4,13 @@ import (
 	"log"
 	"os"
 
-	"github.com/Caknoooo/go-gin-clean-starter/cmd"
-	"github.com/Caknoooo/go-gin-clean-starter/config"
-	"github.com/Caknoooo/go-gin-clean-starter/controller"
-	"github.com/Caknoooo/go-gin-clean-starter/middleware"
-	"github.com/Caknoooo/go-gin-clean-starter/repository"
-	"github.com/Caknoooo/go-gin-clean-starter/routes"
-	"github.com/Caknoooo/go-gin-clean-starter/service"
+	"github.com/adieos/ets-pweb-be/cmd"
+	"github.com/adieos/ets-pweb-be/config"
+	"github.com/adieos/ets-pweb-be/controller"
+	"github.com/adieos/ets-pweb-be/middleware"
+	"github.com/adieos/ets-pweb-be/repository"
+	"github.com/adieos/ets-pweb-be/routes"
+	"github.com/adieos/ets-pweb-be/service"
 
 	"github.com/gin-gonic/gin"
 )

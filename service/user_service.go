@@ -10,12 +10,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Caknoooo/go-gin-clean-starter/constants"
-	"github.com/Caknoooo/go-gin-clean-starter/dto"
-	"github.com/Caknoooo/go-gin-clean-starter/entity"
-	"github.com/Caknoooo/go-gin-clean-starter/helpers"
-	"github.com/Caknoooo/go-gin-clean-starter/repository"
-	"github.com/Caknoooo/go-gin-clean-starter/utils"
+	"github.com/adieos/ets-pweb-be/constants"
+	"github.com/adieos/ets-pweb-be/dto"
+	"github.com/adieos/ets-pweb-be/entity"
+	"github.com/adieos/ets-pweb-be/helpers"
+	"github.com/adieos/ets-pweb-be/repository"
+	"github.com/adieos/ets-pweb-be/utils"
 	"github.com/google/uuid"
 )
 

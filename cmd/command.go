@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/Caknoooo/go-gin-clean-starter/migrations"
+	"github.com/adieos/ets-pweb-be/migrations"
 	"gorm.io/gorm"
 )
 

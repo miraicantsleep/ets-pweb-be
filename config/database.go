@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Caknoooo/go-gin-clean-starter/constants"
+	"github.com/adieos/ets-pweb-be/constants"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

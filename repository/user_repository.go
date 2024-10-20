@@ -4,8 +4,8 @@ import (
 	"context"
 	"math"
 
-	"github.com/Caknoooo/go-gin-clean-starter/dto"
-	"github.com/Caknoooo/go-gin-clean-starter/entity"
+	"github.com/adieos/ets-pweb-be/dto"
+	"github.com/adieos/ets-pweb-be/entity"
 	"gorm.io/gorm"
 )
 
