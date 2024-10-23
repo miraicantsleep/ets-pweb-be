@@ -29,13 +29,16 @@ func main() {
 
 		// Implementation Dependency Injection
 		// Repository
-		userRepository repository.UserRepository = repository.NewUserRepository(db)
+		userRepository      repository.UserRepository      = repository.NewUserRepository(db)
+		transaksiRepository repository.TransaksiRepository = repository.NewTransaksiRepository(db)
 
 		// Service
-		userService service.UserService = service.NewUserService(userRepository, jwtService)
+		userService      service.UserService      = service.NewUserService(userRepository, jwtService)
+		transaksiService service.TransaksiService = service.NewTransaksiService(transaksiRepository, jwtService)
 
 		// Controller
-		userController controller.UserController = controller.NewUserController(userService)
+		userController      controller.UserController      = controller.NewUserController(userService)
+		transaksiController controller.TransaksiController = controller.NewTransaksiController(transaksiService)
 	)
 
 	server := gin.Default()
@@ -43,6 +46,7 @@ func main() {
 
 	// routes
 	routes.User(server, userController, jwtService)
+	routes.Transaksi(server, transaksiController, jwtService)
 
 	server.Static("/assets", "./assets")
 	port := os.Getenv("PORT")

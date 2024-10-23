@@ -40,9 +40,39 @@ type (
 	CreateTransaksiResponse struct {
 		ID     string `json:"id"`
 		Owner  string `json:"owner"`
+		Name   string `json:"name"`
+		Type   string `json:"type"`
+		Amount int    `json:"amount"`
+		Notes  string `json:"notes"`
+	}
+
+	GetDetailTransaksiResponse struct {
+		ID     string `json:"id"`
+		Owner  string `json:"owner"`
+		Name   string `json:"name"`
+		Type   string `json:"type"`
+		Amount int    `json:"amount"`
+		Notes  string `json:"notes"`
+	}
+
+	GetAllTransaksiResponse struct {
+		Count int                          `json:"count"`
+		Data  []GetDetailTransaksiResponse `json:"data"`
+	}
+
+	UpdateTransaksiRequest struct {
 		Name   string `json:"name" binding:"required"`
 		Type   string `json:"type" binding:"required"`
 		Amount int    `json:"amount" binding:"required"`
+		Notes  string `json:"notes"`
+	}
+
+	UpdateTransaksiResponse struct {
+		ID     string `json:"id"`
+		Owner  string `json:"owner"`
+		Name   string `json:"name"`
+		Type   string `json:"type"`
+		Amount int    `json:"amount"`
 		Notes  string `json:"notes"`
 	}
 )

@@ -35,7 +35,7 @@ func Authenticate(jwtService service.JWTService) gin.HandlerFunc {
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, response)
 			return
 		}
-		userId, err := jwtService.GetUserIDByToken(authHeader)
+		userId, userRole, err := jwtService.GetPayloadInsideToken(authHeader)
 		if err != nil {
 			response := utils.BuildResponseFailed(dto.MESSAGE_FAILED_PROSES_REQUEST, err.Error(), nil)
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, response)
@@ -43,6 +43,7 @@ func Authenticate(jwtService service.JWTService) gin.HandlerFunc {
 		}
 		ctx.Set("token", authHeader)
 		ctx.Set("user_id", userId)
+		ctx.Set("role", userRole)
 		ctx.Next()
 	}
 }

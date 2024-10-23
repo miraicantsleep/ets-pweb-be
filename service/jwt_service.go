@@ -12,7 +12,7 @@ import (
 type JWTService interface {
 	GenerateToken(userId string, role string) string
 	ValidateToken(token string) (*jwt.Token, error)
-	GetUserIDByToken(token string) (string, error)
+	GetPayloadInsideToken(token string) (string, string, error)
 }
 
 type jwtCustomClaim struct {
@@ -71,13 +71,14 @@ func (j *jwtService) ValidateToken(token string) (*jwt.Token, error) {
 	return jwt.Parse(token, j.parseToken)
 }
 
-func (j *jwtService) GetUserIDByToken(token string) (string, error) {
+func (j *jwtService) GetPayloadInsideToken(token string) (string, string, error) {
 	t_Token, err := j.ValidateToken(token)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
-	
+
 	claims := t_Token.Claims.(jwt.MapClaims)
 	id := fmt.Sprintf("%v", claims["user_id"])
-	return id, nil
+	role := fmt.Sprintf("%v", claims["role"])
+	return id, role, nil
 }

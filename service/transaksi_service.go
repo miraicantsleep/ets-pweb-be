@@ -132,7 +132,12 @@ func (s *transaksiService) UpdateTransaksi(transaksiId string, req dto.UpdateTra
 }
 
 func (s *transaksiService) DeleteTransaksi(transaksiId string) error {
-	err := s.transaksiRepo.DeleteTransaksi(transaksiId)
+	trans, err := s.transaksiRepo.GetTransaksiById(transaksiId)
+	if err != nil {
+		return err
+	}
+
+	err = s.transaksiRepo.DeleteTransaksi(trans)
 
 	// ini kode apa lol
 	if err != nil {

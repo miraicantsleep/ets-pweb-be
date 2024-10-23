@@ -11,7 +11,7 @@ type (
 		GetTransaksiById(transaksiId string) (entity.Transaksi, error)
 		GetAllTransaksi(ownerId string) ([]entity.Transaksi, error) // can be used for komunal, if admin ownerId = NULL
 		UpdateTransaksi(transaksi entity.Transaksi) (entity.Transaksi, error)
-		DeleteTransaksi(transaksiId string) error
+		DeleteTransaksi(transaksiId entity.Transaksi) error
 	}
 
 	transaksiRepository struct {
@@ -69,8 +69,9 @@ func (r *transaksiRepository) UpdateTransaksi(transaksi entity.Transaksi) (entit
 }
 
 // MUST TEST! gorm docs stinks man
-func (r *transaksiRepository) DeleteTransaksi(transaksiId string) error {
-	if err := r.db.Delete(&entity.Transaksi{}, transaksiId).Error; err != nil {
+func (r *transaksiRepository) DeleteTransaksi(transaksiId entity.Transaksi) error {
+	if err := r.db.Delete(&transaksiId).Error; err != nil {
+		// if err := r.db.Delete(&entity.Transaksi{}, transaksiId).Error; err != nil {
 		return err
 	}
 
