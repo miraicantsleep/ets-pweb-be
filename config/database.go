@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/adieos/ets-pweb-be/constants"
@@ -14,7 +15,7 @@ func SetUpDatabaseConnection() *gorm.DB {
 	if os.Getenv("APP_ENV") != constants.ENUM_RUN_PRODUCTION {
 		err := godotenv.Load(".env")
 		if err != nil {
-			panic(err)
+			log.Default().Println("Error loading .env file")
 		}
 	}
 
